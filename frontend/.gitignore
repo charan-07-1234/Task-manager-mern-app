@@ -1,0 +1,57 @@
+# Node modules
+node_modules/
+*/node_modules/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor folders
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build outputs
+dist/
+build/
+out/
+
+# Frontend specific
+frontend/dist/
+frontend/node_modules/
+frontend/.vite/
+frontend/.env
+
+# Backend specific
+backend/node_modules/
+backend/.env
+
+# Testing
+coverage/
+*.lcov
+
+# Temp files
+tmp/
+temp/
+
+# Process files
+*.pid
+*.seed
+*.lock
+
+# Uploads
+uploads/
