@@ -1,24 +1,30 @@
 import express from "express";
-import userRoutes from "./routes/userRoutes.js";
-import taskRoutes from "./routes/taskRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
-import morgan from "morgan";
+import taskRoutes from "./routes/taskRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
+
 import notFound from "./middlewares/notFound.js";
 import globalErrorHandler from "./middlewares/globalErrorHandler.js";
-import cors from "cors";
 
 const app = express();
 
-app.use(cors());
-
+// Middleware
 app.use(express.json());
-app.use(morgan("dev"));
 
-app.use("/auth", authRoutes);
-app.use("/users", userRoutes);
-app.use("/tasks", taskRoutes);
+// Routes
+app.use("/api/auth", authRoutes);
+app.use("/api/tasks", taskRoutes);
+app.use("/api/users", userRoutes);
 
+// ✅ ADD THIS HERE
+app.get("/", (req, res) => {
+  res.send("API is running 🚀");
+});
+
+// ❌ 404 (must be AFTER all routes)
 app.use(notFound);
+
+// ❌ error handler (last)
 app.use(globalErrorHandler);
 
 export default app;
